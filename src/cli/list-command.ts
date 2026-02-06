@@ -428,11 +428,12 @@ export async function handleList(
 
 export function printListHelp(): void {
   const lines = [
-    'Usage: mcporter list [server | url] [tool-pattern] [flags]',
+    'Usage: mcporter list [target] [tool-pattern] [flags]',
     '',
     'Arguments:',
-    '  <server>               Server name from config or URL',
-    "  <tool-pattern>         Filter tools by name (supports glob: 'amz_*')",
+    '  <target>               Server name from config or URL. (Optional if using ad-hoc flags)',
+    "  <tool-pattern>         Filter tools by name (supports glob: 'amz_*').",
+    '                         If using ad-hoc flags (e.g. --http-url), the first argument is the pattern.',
     '',
     'Targets:',
     '  <name>                 Use a server from config/mcporter.json or editor imports.',

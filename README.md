@@ -42,10 +42,15 @@ npx mcporter call 'linear.create_comment(issueId: "ENG-123", body: "Looks good!"
 ```bash
 npx mcporter list
 npx mcporter list context7 --schema
+npx mcporter list context7 --brief                          # Show concise signatures
+npx mcporter list context7 "resolve-*" --brief              # Filter tools by name pattern
+npx mcporter list context7 query-docs --brief               # Check for a specific tool
 npx mcporter list https://mcp.linear.app/mcp --all-parameters
 npx mcporter list shadcn.io/api/mcp.getComponents           # URL + tool suffix auto-resolves
 npx mcporter list --stdio "bun run ./local-server.ts" --env TOKEN=xyz
 ```
+
+- Add `--brief` to show concise TypeScript-style function signatures instead of full details. This mode supports filtering tools by name using glob patterns (e.g. `list server "amz_*"`).
 
 - Add `--json` to emit a machine-readable summary with per-server statuses (auth/offline/http/error counts) and, for single-server runs, the full tool schema payload.
 - Add `--verbose` to show every config source that registered the server name (primary first), both in text and JSON list output.
@@ -151,6 +156,7 @@ Helpful flags:
 - `--json` (on `mcporter auth`) -- emit the same structured connection envelope whenever OAuth/transport setup fails, instead of throwing an error.
 - `--json` (on `mcporter emit-ts`) -- print a JSON summary describing the emitted files (mode + output paths) instead of text logs—handy when generating artifacts inside scripts.
 - `--all-parameters` -- show every schema field when listing a server (default output shows at least five parameters plus a summary of the rest).
+- `--brief` -- show concise tool signatures only; supports filtering tools by name (e.g. `mcporter list server "query_*" --brief`).
 - `--http-url <https://…>` / `--stdio "command …"` -- describe an ad-hoc MCP server inline. STDIO transports now inherit your current shell environment automatically; add `--env KEY=value` only when you need to inject/override variables alongside `--cwd`, `--name`, or `--persist <config.json>`. These flags now work with `mcporter auth` too, so `mcporter auth https://mcp.example.com/mcp` just works.
 - For OAuth-protected servers such as `vercel`, run `npx mcporter auth vercel` once to complete login.
 
