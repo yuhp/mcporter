@@ -1,2 +1,5 @@
 * text eol=lf
 *.png binary
+*.tar.gz binary
+*.gz binary
+*.tgz binary
