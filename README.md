@@ -151,12 +151,12 @@ Helpful flags:
 - `--oauth-timeout <ms>` -- shorten/extend the OAuth browser wait; same as `MCPORTER_OAUTH_TIMEOUT_MS` / `MCPORTER_OAUTH_TIMEOUT`.
 - `--tail-log` -- stream the last 20 lines of any log files referenced by the tool response.
 - `--output <format>` or `--raw` -- control formatted output (defaults to pretty-printed auto detection).
-- `--json` (on `mcporter list`) -- emit JSON summaries/counts instead of text. Multi-server runs report per-server statuses, counts, and connection issues; single-server runs include the full tool metadata.
+- `--json` (on `mcporter list`) -- emit JSON summaries/counts instead of text. Multi-server runs report per-server statuses, counts, and connection issues; single-server runs include the full tool metadata. Mutually exclusive with `--brief`.
 - `--output json/raw` (on `mcporter call`) -- when a connection fails, MCPorter prints the usual colorized hint and also emits a structured `{ server, tool, issue }` envelope so scripts can handle auth/offline/http errors programmatically.
 - `--json` (on `mcporter auth`) -- emit the same structured connection envelope whenever OAuth/transport setup fails, instead of throwing an error.
 - `--json` (on `mcporter emit-ts`) -- print a JSON summary describing the emitted files (mode + output paths) instead of text logs—handy when generating artifacts inside scripts.
 - `--all-parameters` -- show every schema field when listing a server (default output shows at least five parameters plus a summary of the rest).
-- `--brief` -- show concise tool signatures only; supports filtering tools by name (e.g. `mcporter list server "query_*" --brief`).
+- `--brief` -- show concise tool signatures only; supports filtering tools by name (e.g. `mcporter list server "query_*" --brief`). Mutually exclusive with `--json`, `--schema`, `--verbose`, and `--all-parameters`.
 - `--http-url <https://…>` / `--stdio "command …"` -- describe an ad-hoc MCP server inline. STDIO transports now inherit your current shell environment automatically; add `--env KEY=value` only when you need to inject/override variables alongside `--cwd`, `--name`, or `--persist <config.json>`. These flags now work with `mcporter auth` too, so `mcporter auth https://mcp.example.com/mcp` just works.
 - For OAuth-protected servers such as `vercel`, run `npx mcporter auth vercel` once to complete login.
 

@@ -19,6 +19,8 @@ A quick reference for the primary `mcporter` subcommands. Each command inherits
 - Flags:
   - `--all-parameters` – include every optional parameter in the signature.
   - `--schema` – pretty-print the JSON schema for each tool.
+  - `--brief` – show concise tool signatures only. Mutually exclusive with `--json`, `--schema`, etc.
+  - `--json` – emit a machine-readable summary instead of text. Mutually exclusive with `--brief`.
   - `--timeout <ms>` – per-server timeout when enumerating all servers.
 
 ## `mcporter call <server.tool>`

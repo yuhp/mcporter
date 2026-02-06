@@ -93,6 +93,9 @@ export function extractListFlags(args: string[]): {
   // Validate mutual exclusion for --brief
   if (brief) {
     const conflicts: string[] = [];
+    if (format === 'json') {
+      conflicts.push('--json');
+    }
     if (schema) {
       conflicts.push('--schema');
     }
@@ -453,7 +456,7 @@ export function printListHelp(): void {
     '',
     'Display flags:',
     '  --brief                Show tools as function signatures only.',
-    '                         Cannot be used with --schema, --verbose, --all-parameters.',
+    '                         Cannot be used with --json, --schema, --verbose, --all-parameters.',
     '  --schema               Show tool schemas when listing servers.',
     '  --all-parameters       Include optional parameters in tool docs.',
     '  --json                 Emit a JSON summary instead of text.',
